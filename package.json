@@ -1,0 +1,19 @@
+{
+  "name": "lorenz-attractor",
+  "version": "1.0.0",
+  "description": "Interactive Lorenz Attractor visualization with parameter controls",
+  "main": "index.html",
+  "scripts": {
+    "dev": "python3 -m http.server 8000",
+    "start": "python3 -m http.server 8000"
+  },
+  "keywords": [
+    "lorenz",
+    "attractor",
+    "chaos",
+    "visualization",
+    "mathematics"
+  ],
+  "author": "",
+  "license": "MIT"
+}

@@ -1,8 +1,19 @@
-# Lorenz Attractor Screensaver
+# Lorenz Attractor
 
-A beautiful macOS screensaver that visualizes the famous Lorenz attractor, a set of chaotic solutions to the Lorenz system of differential equations.
+A beautiful visualization of the famous Lorenz attractor, available as both an interactive web application and a macOS screensaver.
 
 ![Lorenz Attractor](https://upload.wikimedia.org/wikipedia/commons/thumb/1/13/A_Trajectory_Through_Phase_Space_in_a_Lorenz_Attractor.gif/400px-A_Trajectory_Through_Phase_Space_in_a_Lorenz_Attractor.gif)
+
+## 🌐 Live Web Version
+
+Experience the Lorenz attractor in your browser with interactive parameter controls!
+
+**Features:**
+- Real-time parameter adjustment (σ, ρ, β)
+- Speed and trail length controls
+- Color shift animation toggle
+- Reset and randomize functions
+- Responsive design for desktop and mobile
 
 ## What is the Lorenz Attractor?
 
@@ -21,7 +32,45 @@ Where σ, ρ, and β are system parameters. The classic values used in this scre
 
 Despite the deterministic nature of these equations, the system exhibits chaotic behavior and sensitivity to initial conditions - the hallmark of chaos theory.
 
-## Features
+## Deploy to Vercel
+
+The easiest way to deploy the web version:
+
+[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https://github.com/YOUR_USERNAME/lorenz)
+
+### Manual Deployment
+
+1. Install Vercel CLI:
+```bash
+npm install -g vercel
+```
+
+2. Deploy:
+```bash
+vercel
+```
+
+3. Follow the prompts to deploy your project
+
+### Local Development
+
+To run the web version locally:
+
+```bash
+# Clone the repository
+git clone <repository-url>
+cd lorenz
+
+# Serve locally (Python 3)
+python3 -m http.server 8000
+
+# Or use any static file server
+# npx serve .
+```
+
+Then open `http://localhost:8000` in your browser.
+
+## macOS Screensaver Features
 
 - Real-time integration of the Lorenz system using 4th-order Runge-Kutta method
 - Smooth, colorful visualization with gradient trails
@@ -29,12 +78,12 @@ Despite the deterministic nature of these equations, the system exhibits chaotic
 - 3D to 2D projection with rotation
 - Native macOS screensaver implementation
 
-## Requirements
+## macOS Screensaver Requirements
 
 - macOS 10.13 (High Sierra) or later
 - Xcode Command Line Tools
 
-## Installation
+## macOS Screensaver Installation
 
 ### Option 1: Build from source
 
@@ -90,7 +139,31 @@ make uninstall
 
 Or manually delete it from `~/Library/Screen Savers/LorenzAttractor.saver`
 
+## Project Structure
+
+```
+lorenz/
+├── index.html              # Web app entry point
+├── lorenz.js              # JavaScript simulation logic
+├── styles.css             # Web app styling
+├── vercel.json            # Vercel deployment config
+├── package.json           # Project metadata
+├── LorenzAttractorView.swift  # macOS screensaver
+├── Info.plist             # macOS bundle info
+└── Makefile               # Build scripts
+```
+
 ## Development
+
+### Web Version
+
+The web application uses vanilla JavaScript with HTML5 Canvas:
+
+1. **index.html**: Main page structure with controls
+2. **lorenz.js**: Implements the Lorenz system simulation
+3. **styles.css**: Modern, responsive UI design
+
+### macOS Screensaver
 
 The screensaver is implemented in a single Swift file (`LorenzAttractorView.swift`) that:
 

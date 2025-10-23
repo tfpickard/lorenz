@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lorenz Attractor - Interactive Visualization</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Lorenz Attractor</h1>
+            <p class="subtitle">Interactive Chaos Theory Visualization</p>
+        </header>
+
+        <div class="main-content">
+            <div class="canvas-container">
+                <canvas id="lorenzCanvas"></canvas>
+            </div>
+
+            <div class="controls">
+                <h2>Parameters</h2>
+
+                <div class="control-group">
+                    <label for="sigma">
+                        σ (Sigma): <span id="sigmaValue">10.0</span>
+                    </label>
+                    <input type="range" id="sigma" min="0" max="20" step="0.1" value="10">
+                    <p class="param-desc">Prandtl number (convective flow intensity)</p>
+                </div>
+
+                <div class="control-group">
+                    <label for="rho">
+                        ρ (Rho): <span id="rhoValue">28.0</span>
+                    </label>
+                    <input type="range" id="rho" min="0" max="50" step="0.1" value="28">
+                    <p class="param-desc">Rayleigh number (temperature difference)</p>
+                </div>
+
+                <div class="control-group">
+                    <label for="beta">
+                        β (Beta): <span id="betaValue">2.67</span>
+                    </label>
+                    <input type="range" id="beta" min="0" max="10" step="0.01" value="2.6667">
+                    <p class="param-desc">Geometric factor (aspect ratio)</p>
+                </div>
+
+                <div class="control-group">
+                    <label for="speed">
+                        Speed: <span id="speedValue">1.0x</span>
+                    </label>
+                    <input type="range" id="speed" min="0.1" max="3" step="0.1" value="1">
+                    <p class="param-desc">Animation speed multiplier</p>
+                </div>
+
+                <div class="control-group">
+                    <label for="trailLength">
+                        Trail Length: <span id="trailValue">5000</span>
+                    </label>
+                    <input type="range" id="trailLength" min="100" max="10000" step="100" value="5000">
+                    <p class="param-desc">Number of points in trajectory</p>
+                </div>
+
+                <div class="control-group">
+                    <label>
+                        <input type="checkbox" id="colorShift" checked>
+                        Color Shift Animation
+                    </label>
+                </div>
+
+                <div class="button-group">
+                    <button id="resetBtn" class="btn btn-primary">Reset</button>
+                    <button id="pauseBtn" class="btn btn-secondary">Pause</button>
+                    <button id="randomBtn" class="btn btn-secondary">Random Parameters</button>
+                </div>
+
+                <div class="info-box">
+                    <h3>About the Lorenz Attractor</h3>
+                    <p>The Lorenz attractor is a set of chaotic solutions to the Lorenz system, discovered by Edward Lorenz in 1963. The system is defined by three coupled differential equations:</p>
+                    <div class="equations">
+                        <p>dx/dt = σ(y - x)</p>
+                        <p>dy/dt = x(ρ - z) - y</p>
+                        <p>dz/dt = xy - βz</p>
+                    </div>
+                    <p>Despite being deterministic, the system exhibits chaotic behavior and extreme sensitivity to initial conditions - a hallmark of chaos theory.</p>
+                </div>
+            </div>
+        </div>
+
+        <footer>
+            <p>Built with vanilla JavaScript | Inspired by Edward Lorenz's work in chaos theory</p>
+        </footer>
+    </div>
+
+    <script src="lorenz.js"></script>
+</body>
+</html>

@@ -27,3 +27,9 @@ DerivedData/
 # Backup files
 *~
 *.bak
+
+# Node/Vercel
+node_modules/
+.vercel
+.env
+.env.local
