@@ -51,6 +51,13 @@ class LorenzAttractorView: ScreenSaverView {
 
         // Adjust scale based on window size
         scale = min(bounds.width, bounds.height) / 80.0
+
+        // Pre-populate some initial points so we have something to draw immediately
+        for _ in 0..<500 {
+            updateLorenzSystem()
+            let screenPoint = projectTo2D(x: x, y: y, z: z)
+            points.append(screenPoint)
+        }
     }
 
     // MARK: - Animation
@@ -61,32 +68,22 @@ class LorenzAttractorView: ScreenSaverView {
         rect.fill()
 
         // Draw the attractor trajectory
-        if points.count > 1 {
+        guard points.count > 1 else { return }
+
+        // Draw line segments with gradient coloring
+        for i in 1..<points.count {
+            let colorProgress = CGFloat(i) / CGFloat(points.count)
+            let color = NSColor(hue: hue + colorProgress * 0.3,
+                              saturation: 0.8,
+                              brightness: 0.9,
+                              alpha: 0.5 + 0.5 * colorProgress)
+            color.setStroke()
+
             let path = NSBezierPath()
-
-            for (index, point) in points.enumerated() {
-                if index == 0 {
-                    path.move(to: point)
-                } else {
-                    path.line(to: point)
-                }
-
-                // Draw with gradient color
-                let colorProgress = CGFloat(index) / CGFloat(maxPoints)
-                let color = NSColor(hue: hue + colorProgress * 0.3,
-                                  saturation: 0.8,
-                                  brightness: 0.9,
-                                  alpha: 0.6 + 0.4 * colorProgress)
-                color.setStroke()
-
-                if index > 0 {
-                    let segment = NSBezierPath()
-                    segment.move(to: points[index - 1])
-                    segment.line(to: point)
-                    segment.lineWidth = 1.5
-                    segment.stroke()
-                }
-            }
+            path.move(to: points[i - 1])
+            path.line(to: points[i])
+            path.lineWidth = 2.0
+            path.stroke()
         }
     }
 
