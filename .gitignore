@@ -1,0 +1,29 @@
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# Screensaver bundle
+*.saver
+
+# Swift build artifacts
+*.swiftmodule
+*.swiftdoc
+*.swiftsourceinfo
+
+# Xcode
+*.xcodeproj
+*.xcworkspace
+xcuserdata/
+*.xcuserstate
+
+# Build directory
+build/
+DerivedData/
+
+# macOS thumbnails
+._*
+
+# Backup files
+*~
+*.bak
